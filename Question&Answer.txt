@@ -1,0 +1,32 @@
+what is emmet?
+Its pr-written code by developers for the ease of development?
+
+what is difference between library and framework?
+its target specific functionality. while framework provides everything to develop a full 
+application
+
+
+why react called react ?
+its complete frontend and specialize in interaction user can interact with searchBar, button and
+menus etc its called react because its react.
+
+what is cross-origin script tag in react?
+when we made a request to an other domain then cors come in to play. it sets mode of the request 
+to HTTPS CORS request 
+
+what is difference between react.development and react.production file?
+Our applications are run on development mode while being developed. And its run on production mode
+once its deployed.
+
+
+what is difference between async and defer?
+
+Async allows your script to run as soon as it's loaded, without blocking other
+elements on the page. Defer means your script will only execute after the page has 
+finished loading.
+
+
+
+
+
+
