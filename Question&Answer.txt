@@ -14,7 +14,7 @@ what is cross-origin script tag in react?
 when we made a request to an other domain then cors come in to play. it sets mode of the request 
 to HTTPS CORS request 
 
-what is difference between react.development and react.production file?
+what is difference between react.development and react.production?
 Our applications are run on development mode while being developed. And its run on production mode
 once its deployed.
 
