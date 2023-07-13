@@ -1,0 +1,31 @@
+{
+  "name": "inception",
+  "version": "1.0.0",
+  "description": "The Episode-02 of Namaste React",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "bundle": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AfaqAafi/Learning.git"
+  },
+  "keywords": [],
+  "author": "Muhammad Afaq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AfaqAafi/Learning/issues"
+  },
+  "homepage": "https://github.com/AfaqAafi/Learning#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1"
+  }
+}
