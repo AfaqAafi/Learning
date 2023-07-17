@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from "react";
 import Restaurantcard from "./Restaurantcard";
 import Shimmar from "./Shimmar";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useResturant from "../utils/useResturant";
+import HocPromotedRestuarant from "./HocPromotedRestuarant";
 
 const Body = () => {
-  const [listRestuarants, setListRestuarants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [filterRest, setFilterRest] = useState([]);
+  const { listRestuarants, filterRest, setFilterRest } = useResturant();
+  const onlineStatus = useOnlineStatus();
+  const IsPromotedComp = HocPromotedRestuarant(Restaurantcard);
 
-  console.log("afaq");
-  // console.log("afaq");
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const resp = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+  if (onlineStatus === false) {
+    return (
+      <div className="body_container">
+        <h1>You are offline, Please check your network</h1>;
+      </div>
     );
-    const myResp = await resp.json();
-    setListRestuarants(myResp?.data?.cards[2]?.data?.data?.cards);
-    setFilterRest(myResp?.data?.cards[2]?.data?.data?.cards);
-  };
+  }
 
   if (listRestuarants?.length === 0) {
     return <Shimmar />;
   }
 
   return (
-    <div className="body_container">
-      <div className="filter">
-        <div className="search">
+    <div className="px-4 lg:px-24 mt-10 pb-24">
+      <div className="flex lg:flex-row flex-col items-center gap-3 mt-6">
+        <div className="flex flex-col sm:flex-row items-center gap-2">
           <input
+            className="border text-[19px] border-slate-500 pr-24 pl-2 py-3"
             type="text"
             name=""
             id=""
@@ -38,10 +36,10 @@ const Body = () => {
             onChange={(e) => setSearchInput(e.target.value)}
           />
           <button
-            className="auth"
+            className="px-3 py-3 bg-slate-500 text-2xl text-white"
             onClick={() =>
               setFilterRest(
-                listRestuarants.filter((resCard) =>
+                listRestuarants?.filter((resCard) =>
                   resCard.data.name
                     .toLowerCase()
                     .includes(searchInput.toLowerCase())
@@ -53,20 +51,27 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="filter_btn"
+          className="px-3 py-2 bg-slate-500 text-2xl text-white"
           onClick={() =>
-            setListRestuarants(
-              listRestuarants.filter((res) => res?.data?.avgRating > 4.3)
+            setFilterRest((listRestuarants) =>
+              listRestuarants?.filter((res) => res?.data?.avgRating > 4.3)
             )
           }
         >
           High Rated Restuarants
         </button>
       </div>
-      <div className="restaurant_card_container">
-        {filterRest?.map((resList) => (
-          <Restaurantcard key={resList.data.id} resList={resList} />
-        ))}
+
+      <div className="flex flex-wrap items-center justify-center lg:justify-between gap-3 mt-10">
+        {/* //* if restuarant card is promoted present then render otherwise won't  */}
+
+        {filterRest?.map((resList) =>
+          resList?.data?.promoted ? (
+            <IsPromotedComp key={resList?.data?.id} resList={resList} />
+          ) : (
+            <Restaurantcard key={resList?.data?.id} resList={resList} />
+          )
+        )}
       </div>
     </div>
   );
