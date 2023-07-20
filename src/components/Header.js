@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-between shadow-lg items-center py-4 lg:py-16 h-16 px-4 lg:px-24">
+      <div className="flex bg-white justify-between shadow-lg items-center py-4 lg:py-16 h-16 px-4 lg:px-24">
         <div className="w-10 cursor-pointer gap-2 flex items-center lg:w-24">
           <img
             className="object-fill h-full w-full cursor-pointer"
@@ -25,7 +25,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           <ul className="hidden lg:flex gap-2 text-2xl list-none">
             <li className="mr-3">
-              {onlineStatus === true ? "Online 🟢" : "Offline 🔴"}
+              {onlineStatus === true ? "Online 🔵" : "Offline 🔴"}
             </li>
             <li className="mr-3">
               <Link to="/">Home</Link>
@@ -35,9 +35,6 @@ const Header = () => {
             </li>
             <li className="mr-3">
               <Link to="/contact">Contact</Link>
-            </li>
-            <li className="mr-3">
-              <Link to="/categories">Categories</Link>
             </li>
             <li className="mr-3">
               <Link to="/cart">Cart</Link>
@@ -74,11 +71,6 @@ const Header = () => {
               <li className="mr-3">
                 <Link to="/contact" onClick={() => setIsSidebarOpen(false)}>
                   Contact
-                </Link>
-              </li>
-              <li className="mr-3">
-                <Link to="/categories" onClick={() => setIsSidebarOpen(false)}>
-                  Categories
                 </Link>
               </li>
               <li className="mr-3">

@@ -13,10 +13,9 @@ const RestaurantCard = ({ resList }) => {
     costForTwo,
     deliveryTime,
   } = resList?.data;
-
   return (
     <div
-      className="max-w-[460px] mx-auto rounded overflow-hidden shadow-lg cursor-pointer
+      className="max-w-[460px] rounded overflow-hidden shadow-lg cursor-pointer
        hover:shadow-xl transition duration-300 p-4"
       onClick={() => navigation(`/restuarant/${id}`)}
     >
@@ -42,7 +41,13 @@ const RestaurantCard = ({ resList }) => {
               clipRule="evenodd"
             ></path>
           </svg>
-          <span className="text-gray-700 text-[18px]">{avgRating} stars</span>
+          <span
+            className={`text-gray-700 font-bold p-1 rounded-lg text-[18px] ${
+              avgRating > 3.9 ? "bg-yellow-300" : "bg-green-300"
+            }`}
+          >
+            {avgRating} stars
+          </span>
         </div>
         <div className="flex gap-2 items-center">
           <svg

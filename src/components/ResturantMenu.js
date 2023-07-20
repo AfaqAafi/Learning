@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmar from "./Shimmar";
 import useResturantMenu from "../utils/useResturantMenu";
@@ -6,7 +6,7 @@ import ResturantCategory from "./ResturantCategory";
 
 const ResturantMenu = () => {
   const { id } = useParams();
-
+  const [showIndex, setShowIndex] = useState(null);
   const resInfo = useResturantMenu(id);
 
   if (resInfo === null) return <Shimmar />;
@@ -33,11 +33,13 @@ const ResturantMenu = () => {
           {cuisines.join(", ")}
         </p>
 
-        {category?.map((itemList) => {
+        {category?.map((itemList, index) => {
           return (
             <ResturantCategory
               key={itemList.card.card.title}
               itemList={itemList}
+              showCategory={index === showIndex ? true : false}
+              setShowIndex={() => setShowIndex(index)}
             />
           );
         })}

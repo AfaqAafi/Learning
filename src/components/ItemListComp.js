@@ -2,8 +2,6 @@ import React from "react";
 import { CDN_URL } from "../utils/constant";
 
 const ItemListComp = ({ itemList }) => {
-  console.log(itemList);
-
   return (
     <div>
       {itemList?.map((item) => (

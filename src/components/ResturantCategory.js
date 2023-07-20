@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ItemListComp from "./ItemListComp";
-const ResturantCategory = ({ itemList }) => {
-  const [showCategory, setShowCategory] = useState(false);
+
+const ResturantCategory = ({ itemList, showCategory, setShowIndex }) => {
+  const [isTrue, setIsTrue] = useState(false);
 
   const handlerItemList = () => {
-    setShowCategory(!showCategory);
+    setShowIndex();
+    setIsTrue(!isTrue);
   };
 
   return (
@@ -24,7 +26,7 @@ const ResturantCategory = ({ itemList }) => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-8 h-8"
+            className={`w-8 h-8 ${showCategory ? "rotate-180" : "rotate-0"}`}
           >
             <path
               strokeLinecap="round"
@@ -35,7 +37,9 @@ const ResturantCategory = ({ itemList }) => {
         </span>
       </div>
 
-      {showCategory && <ItemListComp itemList={itemList.card.card.itemCards} />}
+      {showCategory && isTrue && (
+        <ItemListComp itemList={itemList.card.card.itemCards} />
+      )}
     </div>
   );
 };

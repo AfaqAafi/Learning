@@ -7,7 +7,6 @@ import Contact from "./components/Contact";
 import ErrorElement from "./components/ErrorElement";
 import Cart from "./components/Cart";
 import ResturantMenu from "./components/ResturantMenu";
-import { Suspense, lazy } from "react";
 
 const AppLayout = () => {
   return (
@@ -17,9 +16,6 @@ const AppLayout = () => {
     </>
   );
 };
-
-const Categories = lazy(() => import("./components/Categories"));
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,14 +36,6 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-      },
-      {
-        path: "/categories",
-        element: (
-          <Suspense>
-            <Categories />
-          </Suspense>
-        ),
       },
       {
         path: "/restuarant/:id",
