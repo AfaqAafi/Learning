@@ -1,7 +1,15 @@
 import React from "react";
 import { CDN_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../utils/cartSlice";
 
 const ItemListComp = ({ itemList }) => {
+  const dispatch = useDispatch();
+
+  const handlerAddToCart = (item) => {
+    dispatch(addToCart(item));
+  };
+
   return (
     <div>
       {itemList?.map((item) => (
@@ -25,7 +33,10 @@ const ItemListComp = ({ itemList }) => {
           </div>
           <div className="p-4 relative">
             <div className="absolute top-0 left-0">
-              <button className="p-2 rounded-lg bg-black text-white shadow-lg">
+              <button
+                className="p-2 rounded-lg bg-black text-white shadow-lg"
+                onClick={() => handlerAddToCart(item)}
+              >
                 Add +
               </button>
             </div>

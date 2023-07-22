@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import { useSelector } from "react-redux";
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const onlineStatus = useOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.cartItems);
+
+  console.log(cartItems);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -37,7 +40,7 @@ const Header = () => {
               <Link to="/contact">Contact</Link>
             </li>
             <li className="mr-3">
-              <Link to="/cart">Cart</Link>
+              <Link to="/cart">Cart - {cartItems.length} </Link>
             </li>
           </ul>
           <button

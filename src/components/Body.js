@@ -5,6 +5,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import useResturant from "../utils/useResturant";
 import HocPromotedRestuarant from "./HocPromotedRestuarant";
 import Footer from "./Footer";
+import Carousel from "./Carousel";
 
 const Body = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -26,6 +27,7 @@ const Body = () => {
 
   return (
     <>
+      <Carousel />
       <div className="px-4 min-h-screen lg:px-24 mt-10 pb-24">
         <div className="flex lg:flex-row flex-col justify-center items-center gap-3 mt-20">
           <div className="flex flex-col sm:flex-row items-center gap-4">

@@ -7,13 +7,15 @@ import Contact from "./components/Contact";
 import ErrorElement from "./components/ErrorElement";
 import Cart from "./components/Cart";
 import ResturantMenu from "./components/ResturantMenu";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 const AppLayout = () => {
   return (
-    <>
+    <Provider store={store}>
       <Header />
       <Outlet />
-    </>
+    </Provider>
   );
 };
 const router = createBrowserRouter([
